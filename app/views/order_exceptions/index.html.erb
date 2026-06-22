@@ -1,0 +1,55 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Order exceptions" %>
+
+<h1>Order exceptions</h1>
+
+<div id="order_exceptions">
+  <% @order_exceptions.each do |order_exception| %>
+    <%= render order_exception %>
+
+    <% # --- AI INSIGHTS BLOCK --- %>
+    <% if order_exception.ai_category.present? %>
+      <div style="margin-top: 12px; margin-bottom: 12px; padding: 12px; border-radius: 6px; background-color: #f8fafc; border-left: 4px solid 
+        <%= case order_exception.ai_category
+            when 'Customer_Data_Issue' then '#3b82f6' # Μπλε
+            when 'Merchant_Stock_Issue' then '#f59e0b' # Πορτοκαλί
+            when 'Provider_Infrastructure_Down' then '#ef4444' # Κόκκινο
+            else '#64748b' # Γκρι
+            end %>;">
+        
+        <div style="display: flex; align-items: center; gap: 6px; font-weight: bold; font-size: 0.9rem; margin-bottom: 4px;">
+          <span>🤖 AI Analysis:</span>
+          <span style="padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; text-transform: uppercase;
+            background-color: 
+              <%= case order_exception.ai_category
+                  when 'Customer_Data_Issue' then '#dbeafe'
+                  when 'Merchant_Stock_Issue' then '#fef3c7'
+                  when 'Provider_Infrastructure_Down' then '#fee2e2'
+                  else '#f1f5f9'
+                  end %>;
+            color: 
+              <%= case order_exception.ai_category
+                  when 'Customer_Data_Issue' then '#1e40af'
+                  when 'Merchant_Stock_Issue' then '#854d0e'
+                  when 'Provider_Infrastructure_Down' then '#991b1b'
+                  else '#475569'
+                  end %>;">
+            <%= order_exception.ai_category.gsub('_', ' ') %>
+          </span>
+        </div>
+        
+        <p style="margin: 0; font-size: 0.9rem; color: #334155; font-style: italic;">
+          <strong>Προτεινόμενη ενέργεια:</strong> <%= order_exception.ai_suggested_action %>
+        </p>
+      </div>
+    <% end %>
+    <% # ------------------------- %>
+
+    <p>
+      <%= link_to "Show this order exception", order_exception %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New order exception", new_order_exception_path %>

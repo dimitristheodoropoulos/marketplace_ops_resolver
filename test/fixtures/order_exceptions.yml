@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_number: MyString
+  merchant_id: 1
+  status: MyString
+  error_message: MyText
+  resolved_at: 2026-06-22 16:24:22
+
+two:
+  order_number: MyString
+  merchant_id: 1
+  status: MyString
+  error_message: MyText
+  resolved_at: 2026-06-22 16:24:22

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @order_exception %>
+
+<div>
+  <%= link_to "Edit this order exception", edit_order_exception_path(@order_exception) %> |
+  <%= link_to "Back to order exceptions", order_exceptions_path %>
+
+  <%= button_to "Destroy this order exception", @order_exception, method: :delete %>
+</div>

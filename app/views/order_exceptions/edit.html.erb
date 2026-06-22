@@ -1,0 +1,12 @@
+<% content_for :title, "Editing order exception" %>
+
+<h1>Editing order exception</h1>
+
+<%= render "form", order_exception: @order_exception %>
+
+<br>
+
+<div>
+  <%= link_to "Show this order exception", @order_exception %> |
+  <%= link_to "Back to order exceptions", order_exceptions_path %>
+</div>
